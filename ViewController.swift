@@ -29,14 +29,24 @@ class ViewController: UIViewController {
               secondLabel.text = "0"
               view.addSubview(secondLabel)
               self.secondLabel = secondLabel
-        // button
-        let button = UIButton()
-        button.frame = CGRect(x: 150, y: 350, width: 60, height: 60)
-        button.setTitle("Click", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        view.addSubview(button)
         
-        button.addTarget(self, action: #selector(ViewController.incrementCount), for: UIControl.Event.touchUpInside)
+        // + button
+        let incrementButton = UIButton()
+        incrementButton.frame = CGRect(x: 100, y: 350, width: 100, height: 60)
+        incrementButton.setTitle("Increment", for: .normal)
+       incrementButton.setTitleColor(UIColor.blue, for: .normal)
+        view.addSubview(incrementButton)
+        
+        // - button
+        let decrementButton = UIButton()
+        decrementButton.frame = CGRect(x: 200, y: 350, width: 100, height: 60)
+        decrementButton.setTitle("Decrement", for: .normal)
+       decrementButton.setTitleColor(UIColor.blue, for: .normal)
+        view.addSubview(decrementButton)
+        
+        incrementButton.addTarget(self, action: #selector(ViewController.incrementCount), for: UIControl.Event.touchUpInside)
+        
+         decrementButton.addTarget(self, action: #selector(ViewController.decrementCount), for: UIControl.Event.touchUpInside)
     }
     
     @objc func incrementCount() {
@@ -45,6 +55,12 @@ class ViewController: UIViewController {
         self.secondLabel.text = "\(self.count)"
     }
 
+    @objc func decrementCount() {
+          self.count -= 1
+          self.label.text = "\(self.count)"
+          self.secondLabel.text = "\(self.count)"
+      }
 
+    
 }
 
